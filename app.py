@@ -1,10 +1,10 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
 stores = [
     {
-        'name': 'My wonderful store',
+        'name': 'My Wonderful Store',
         'items': [
             {
                 'name': 'My item',
@@ -13,6 +13,10 @@ stores = [
         ]
     }
 ]
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/store', methods=['POST'])
 def create_store():
